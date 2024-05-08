@@ -13,10 +13,14 @@ function authenticateToken(req, res, next){
 }
 
 function generateAccessToken(username){
-    return jwt.sign({data: username}, "Snippet_SecretKEY", {expiresIn: '7d'});
+    return jwt.sign({data: username}, "Snippet_SecretKEY", {expiresIn: '15m'});
+}
+function generateAccessTokenAuth(username){
+    return jwt.sign({data: username}, "Snippet_SecretKEY", {expiresIn: '1y'});
 }
 
 module.exports = {
     authenticateToken,
     generateAccessToken,
+    generateAccessTokenAuth,
 }
